@@ -1,0 +1,387 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul, li {
+    margin-left: 10px;
+}
+
+body {
+    color: white;
+    font: 14px Verdana, sans;
+    line-height: 21px;
+    background: #939E7F;
+}
+
+#header {
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    font-size: 15px;
+    font-family: 'Nobile', arial, sans-serif;
+    text-shadow: 1px 1px 0 black;
+    background-color: #3C312B;
+}
+
+ul.menu {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: left;
+}
+
+ul.menu li {
+    display: inline;
+    margin: 0 10px;
+    list-style-type: none;
+}
+
+ul.menu li a.active {
+    color: #D2C2B8;
+}
+
+ul.menu li a {
+    text-decoration: none;
+    color: white;
+}
+
+ul.menu li a:visited {
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+#topbox, #leftbox, #rightbox, #box {
+    background-color: #3C312B;
+    border-radius: 6px;
+    padding: 10px;
+    overflow: auto;
+}
+
+#table {
+    width: 100%;
+    padding: 30px;
+}
+
+#bottomboxes {
+    height: 100px;
+}
+
+#tools {
+    height: 100px;
+    overflow: auto;
+}
+
+#rightbox {
+    width: 300px;
+}
+
+button {
+    color: white;
+    background-color: #604E44;
+    border-radius: 5px;
+    border: 1px solid #604E44;
+    padding: 0 20px;
+    line-height: 19px;
+    height: 22px;
+    font-size: 13px;
+    margin: 2px;
+}
+
+button:hover {
+    border: 1px solid #A0887A;
+}
+
+button:active, button.active {
+    background-color: #A0887A;
+}
+
+.underline {
+    border-bottom: 3px solid #604E44;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    border-bottom: 3px solid #604E44;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #c0c0ff;
+}
+
+a:visited, a:hover { }
+
+#input_name {
+    border: 0px;
+    font-size: 24px;
+    width: 100%;
+    color: white;
+    background-color: #3C312B;
+}
+
+#box {
+    margin: 30px;
+    position: relative;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    border: 3px solid black;
+    background-color: #604E44;
+    color: white;
+}
+
+#canvas_div {
+    position: absolute;
+    left: 100px;
+    right: 100px;
+    overflow: auto;
+}
+
+#canvas_div_placeholder {
+    width: 100%;
+    height: 100%;
+}
+
+#canvas {
+    display: block;
+    height: 150px;
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 0;
+}
+
+#helpcontents {
+    overflow: auto;
+    height: 500px;
+    clear: right;
+}
+
+#mousepos {
+    display: block;
+    font-family: mono;
+    font-size: 12px;
+    height: 20px;
+    border: 3px solid #604E44;
+    border-radius: 3px;
+    background-color: #303030;
+    position: absolute;
+    bottom: 178px;
+    width: 150px;
+    line-height: 20px;
+    text-align: right;
+    padding-right: 3px;
+}
+
+#mousepos.left {
+    right: 67px;
+}
+
+#mousepos.right {
+    left: 67px;
+}
+
+#stadium_properties {
+    width: 100%;
+    font-size: 12px;
+}
+
+#traits {
+    font-size: 12px;
+    clear: left;
+}
+
+#button_help_close {
+    float: right;
+}
+
+label.prop {
+    display: block;
+    float: left;
+    height: 22px;
+    line-height: 19px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #604E44;
+    background-color: #604E44;
+    clear: left;
+    margin: 2px 0;
+    padding: 0 10px;
+}
+
+input.prop, select.prop {
+    display: block;
+    float: left;
+    height: 24px;
+    line-height: 19px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #303030;
+    width: 100px;
+    clear: right;
+    border: 3px solid #604E44; /* was 3px */
+    margin: 2px 0;
+    color: white;
+    padding: 0 10px;
+}
+
+input.prop.error, select.prop.error {
+    border: 3px solid #dd0000;
+}
+
+#left_tabs {
+    border-right: 3px solid #604E44;
+    width: 90px;
+}
+
+#tab_parent {
+    height: 86px;
+    overflow: auto;
+}
+
+#left_tabs button {
+    width: 85px;
+    height: 22px;
+    line-height: 19px;
+    margin: 2px 0;
+    padding: 0px;
+}
+
+.property {
+    display: none;
+    float: left;
+    overflow: hidden;
+    font-size: 13px;
+    margin-left: 6px;
+}
+
+table.center-content {
+    width: 100%;
+    height: 100%;
+}
+
+table.center-content td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+#boxlogin, #boxregister {
+    width: 100%;
+    height: 100%;
+}
+
+
+label.form {
+    display: inline-block;
+    text-align: right;
+    height: 22px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #604E44;
+    background-color: #604E44;
+    padding: 0 10px;
+    width: 150px;
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+input.form, select.form {
+    display: inline-block;
+    height: 24px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #303030;
+    width: 300px;
+    border: 1px solid #604E44;
+    color: white;
+    padding: 0 10px;
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+input.form.error, select.form.error {
+    border: 3px solid #dd0000;
+}
+
+body.logged-in .anonymous {
+    display: none;
+}
+
+body.logged-out .valid-user {
+    display: none;
+}
+
+#button_save.modified {
+    background-color: #a05451;
+}
+
+#library_list tr.active {
+    background-color: #705451;
+}
+
+#library_list td {
+    padding-right: 20px;
+    border-top: 2px solid black;
+}
+
+#librarytable {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+/*#boxlibrary, #boxlibrary * {border: 1px solid red;}*/
+
+#libraryright {
+    border: 2px solid black;
+}
+
+#libraryleft {
+    width: 1%;
+}
+
+#libraryright table {
+    width: 100%;
+}
+
+#boxlibrary.owner button.owner {
+    display: inline;
+}
+
+#boxlibrary button.owner {
+    display: none;
+}
+
+.prop_group {
+    border: 3px solid #705451;
+    border-radius: 5px;
+    overflow: auto;
+    padding: 10px;
+    margin: 10px;
+    padding-top: 0px;
+    float: left;
+}
+
+.prop_group_title {
+    border-radius: 5px;
+    background-color: #3C312B;
+    border: 3px solid #705451;
+    position: relative;
+    border-top: 0;
+    top: -5px;
+    padding: 5px;
+    padding-top: 10px;
+    float: left;
+}

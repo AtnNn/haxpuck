@@ -1,0 +1,440 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>HaxPuck.com</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript" src="edit.js?_v=10"></script>
+<link type="text/css" href="edit.css?_v=10" rel="stylesheet" />
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11375946-2']);
+  _gaq.push(['_setDomainName', 'haxpuck.com']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<link rel="shortcut icon" href="favicon.ico"/>
+</head><body class="logged-out">
+<div id="header">
+<ul id="menu" class="menu">
+  <li><a class="active">HaxPuck.com</a>
+  <li><a href="http://haxball.com/" target="_blank">Play HaxBall</a>
+  <li><a id="stadium_editor_link" href="#">Stadium Editor</a>
+  <li><a id="library_link" href="#">Library</a>
+  <li><a href="https://plus.google.com/109286404864146997610/posts" target="_blank">News</a>
+  <li><a href="http://code.atnnn.com/boards/5/topics/new" target="_blank">Report a Bug</a>
+  <li><a href="#" id="login_link" class="anonymous">Login</a>
+  <li><a href="#" id="register_link" class="anonymous">Register</a>
+  <li><a href="#" id="logout_link" class="valid-user">Logout</a>
+<script>
+if (!(top === self)){
+  document.write('<li><a href="http://www.haxpuck.com/" target="_blank">Full Screen</a>');
+}
+</script>
+</ul>
+<a href="http://haxpuck.com/football4africa" target="_blank" style="position: fixed; right: 0px; top: 0px">
+  <img src="f4f.png">
+</a>
+</div>
+<table id="table" cellspacing="7px">
+  <tr>
+    <td colspan="2" id="topbox" valign="top">
+      <table style="width: 100%; height: 100%"><tr><td>
+	    <table class="underline" style="width:100%"><tr>
+		<td style="width:100%"><input id="input_name" value=""></input></td>
+		<td><button id="button_save" class="valid-user">Save</button></td>
+		<td><button id="button_download" class="valid-user">Download</button></td>
+		<td><button id="button_import">Text&nbsp;Mode</button></td>
+		<td><button id="button_properties">Stadium&nbsp;Properties</button></td>
+		<td><button id="button_help">Help</button></td>
+	    </tr></table>
+	</td></tr><tr><td style="height:100%">
+	    <div id="canvas_div_placeholder"></div>
+	    <div id="canvas_div">
+	      <canvas id="canvas"></canvas>
+	      <div id="stadium_properties" class="hidden">
+                <div class="prop_group">
+                  <div class="prop_group_title">General</div>
+		  <label class="prop">Spawn Distance:</label><input class="prop" type="text" id="prop_spawnDistance">
+		  <label class="prop">Width:</label><input class="prop" type="text" id="prop_width">
+		  <label class="prop">Height:</label><input class="prop" type="text" id="prop_height">
+                </div>
+                <div class="prop_group">
+                  <div class="prop_group_title">Background</div>
+                  <label class="prop">Type:</label>
+                  <select class="prop" id="prop_bg_type">
+                    <option value=""></option>
+                    <option value="grass">grass</option>
+                    <option value="hockey">hockey</option>
+                  </select>
+                  <label class="prop">Height:</label><input class="prop" type="text" id="prop_bg_height">
+                  <label class="prop">Width:</label><input class="prop" type="text" id="prop_bg_width">
+                  <label class="prop">Corner Radius:</label><input class="prop" type="text" id="prop_bg_cornerRadius">
+                  <label class="prop">Kick-off Radius:</label><input class="prop" type="text" id="prop_bg_kickOffRadius">
+                </div>
+                <div class="prop_group">
+                  <div class="prop_group_title">Player Physics</div>
+                  <label class="prop">Bounce</label><input class="prop" type="text" id="prop_pp_bCoef">
+                  <label class="prop">Inverse Mass</label><input class="prop" type="text" id="prop_pp_invMass">
+                  <label class="prop">Damping</label><input class="prop" type="text" id="prop_pp_damping">
+                  <label class="prop">Acceleration</label><input class="prop" type="text" id="prop_pp_acceleration">
+                  <label class="prop">Kicking Acceleration</label><input class="prop" type="text" id="prop_pp_kickingAcceleration">
+                  <label class="prop">Kicking Damping</label><input class="prop" type="text" id="prop_pp_kickingDamping">
+                  <label class="prop">Kick Strength</label><input class="prop" type="text" id="prop_pp_kickStrength">
+                </div>
+                <div class="prop_group">
+                  <div class="prop_group_title">Ball Physics</div>
+                  <label class="prop">Radius</label><input class="prop" type="text" id="prop_bp_radius">
+                  <label class="prop">Bounce</label><input class="prop" type="text" id="prop_bp_bCoef">
+                  <label class="prop">Inverse Mass</label><input class="prop" type="text" id="prop_bp_invMass">
+                  <label class="prop">Damping</label><input class="prop" type="text" id="prop_bp_damping">
+                  <label class="prop">Color</label><input class="prop" type="text" id="prop_bp_color">
+                  <label class="prop">Collision Mask</label><input class="prop" type="text" id="prop_bp_cMask">
+                  <label class="prop">Collision Group</label><input class="prop" type="text" id="prop_bp_cGroup">
+                </div>
+		<!--
+		<table id="traits">
+		  <tr class="header"><td>Name</td><td>Radius</td><td>bCoeff</td></tr>
+		  <tr><td><input>foo</input></td><td><input>5</input></td><td><input>7.8</input></td></tr>
+		</table>
+		-->
+	      </div>
+	    </div>
+      </td></tr></table>
+    </td>
+  </tr>
+  <tr id="bottomboxes">
+    <td id="leftbox" valign="top">
+      <table><tr>
+      <td id="left_tabs">
+	<button id="button_tab_properties" class="active">Properties</button>
+	<button id="button_tab_edit">Edit</button>
+	<button id="button_tab_advanced">Tools</button>
+      </td><td>
+            <div id="tab_parent">
+              <div id="tab_properties"> </div>
+              <div id="tab_edit" class="hidden">
+	        <button id="button_undo">Undo</button>
+	        <button id="button_redo">Redo</button>
+	        <button id="button_delete">Delete</button>
+	        <button id="button_select_all">Select All</button>
+	        <button id="button_select_none">Select None</button>
+	        <button id="button_inverse_selection">Invert Selection</button>
+	        <button id="button_cut">Cut</button>
+	        <button id="button_copy">Copy</button>
+	        <button id="button_paste">Paste</button>
+	        <button id="button_duplicate">Duplicate</button>
+              </div>
+              <div id="tab_advanced" class="hidden">
+                <button id="button_mirror_mode">Automatic Mirror</button>
+	        <button id="pref_preview">Preview</button>
+              </div>
+	    </div>
+      </td></tr></table>
+    </td>
+    <td id="rightbox" valign="top">
+      <pre id="mousepos" class="left"></pre>
+      <button id="button_tool_select">Select</button>
+      <button id="button_tool_rotate">Rotate</button>
+      <button id="button_tool_scale">Scale</button>
+      <button id="button_tool_segment">Segment</button>
+      <button id="button_tool_vertex">Vertex</button>
+      <button id="button_tool_disc">Disc</button>
+      <button id="button_tool_goal">Goal</button>
+      <button id="button_tool_plane">Plane</button>
+    </td>
+  </tr>
+</table>
+<div id="box" class="hidden">
+  <div id="boxlibrary">
+    <table id="librarytable">
+      <tr>
+        <td id="librarytop" colspan="2" style="width:100%" align="right">
+          <button id="button_library_new">New</button>
+          <button id="button_library_edit">Edit</button>
+          <button id="button_library_delete" class="owner">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td id="libraryleft" valign="top">
+          <!--Search: <input type="text" id="input_library_search">-->
+          <button id="library_button_public" class="active">Public Stadiums</button><br>
+          <button id="library_button_saved">Saved Stadiums</button>
+        </td>
+        <td id="libraryright">
+          <table cellspacing="0">
+            <thead id="library_list_header">
+              <tr>
+                <td id="llh_date">Date</td>
+                <td id="llh_user">Repository</td>
+                <td id="llh_name">Name</td>
+              </tr>
+            </thead>
+            <tbody id="library_list"></tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="boxlogin" class="hidden">
+    <table class="center-content"><tr><td>
+          <label class="form">Username:</label><input class="form"type="text" id="login_name"><br>
+          <label class="form">Password:</label><input class="form"type="password" id="login_password"><br>
+          <button id="button_login_login">Login</button>
+          <button id="button_login_close">Cancel</button>
+    </td></tr></table>
+  </div>
+  <div id="boxregister" class="hidden">
+    <table class="center-content"><tr><td>
+          <label class="form">Username:</label><input type="text" id="register_name" class="form"><br>
+          <label class="form">Password:</label><input type="text" id="register_password" class="form"><br>
+          <label class="form">Email:</label><input type="text" id="register_email" class="form"><br>
+          <button id="button_register_register">Register</button>
+          <button id="button_register_close">Cancel</button>
+    </td></tr></table>
+  </div>
+  <div id="boximport" class="hidden">
+    <table style="height: 100%; width: 100%">
+      <tr><td style="height:100%"><textarea id="textarea_import"></textarea></td></tr>
+      <tr><td>
+	  <button id="button_import_import">Visual Mode</button>
+	  <button id="button_import_cancel">Cancel Changes</button>
+	  <button id="button_import_select_all">Select All</button>
+	  <button id="button_import_clear">Clear</button>
+	  <button id="button_import_goto">Goto Character</button>
+      </td></tr>
+    </table>
+  </div>
+  <div id="boxhelp" class="hidden">
+    <button id="button_help_close">Close</button>
+	  <div id="helpcontents">
+	    <h2>AtnNn's Haxball Stadium Editor</h3>
+	    <h3>About</h3>
+	    This is the version released on 2012-02-02.
+            <h4>Changes since the <a href="http://haxpuck.com/20111229/">2011-12-29 version</a></h4>
+            <ul>
+              <li>New parameters from the official HaxBall update
+              <li>User accounts
+              <li>Save button
+              <li>Download Button
+              <li>Library
+              <li>Fixed some bugs
+            </ul>
+            <h4>Changes since the <a href="http://haxpuck.com/20111219/edit.html">2011-12-19 version</a></h4>
+            <ul>
+              <li>Fixed many bugs
+              <li>Added more information in the help file.
+              <li>Added Automatic Mirror Mode
+              <li>Switched to HaxPuck.com
+            </ul>
+            <h3>Save</h3>
+            You need to be logged in to access these functions.
+            <ul>
+              <li>The <b>Save</b> button saves the stadium to your private HaxPuck library.
+              <li>The <b>Download</b> button allows you to download the stadium to your computer.
+            </ul>
+	    <h3>Tools</h3> Numbers in parenthesis represent the
+	    keyboard shortcut. A stadium can have a maximum of 255 of
+	    each type of object.
+	    <ul>
+	      <li> <b>Select</b> (1)
+		<ul>
+		  <li>Click on objects to select them.
+		  <li>Shift-click to select multiple objects.
+		  <li>Click and drag to select multiple objects.
+		  <li>Click and drag on segments to curve them.
+		  <li>Click and drag on selected objects to move them around.
+		</ul>
+		To move segment, first click on it to select it, then
+		drag its vertices.
+	      <li> <b>Rotate</b> (2)
+		<ul>
+		  <li>Click to place the center of rotation.
+		  <li>Click and drag to rotate the selected objects.
+		</ul> 
+	      <li> <b>Scale</b> (3)
+		<ul>
+		  <li>Click to place the center of transformation.
+		  <li>Click and drag to scale or flip the selected objects.
+		</ul>
+		Some  types of  objects  do not  scale well.  Ideally,
+		discs  and curved  segments become  oval-shaped  when scaled
+		vertically or  horizontally. Haxball does  not support
+		ovals, so their image needs to be approximated.
+		<ul>
+		  <li>A scaled disc will have the same area as it's ideal oval.
+		  <li>A curved segment will keep the same tangent on it's first point.
+		  <li>Segments, vertices, planes and goals scale perfectly.
+		</ul>
+	      <li> <b>Segment</b> (4) -
+		A segment connects two vertices. They can be used as decorations or as walls. 
+		<ul>
+		  <li>Click and drag to create segments.
+		  <li>Click on existing vertices to connect segments to them.
+		</ul>
+	      <li> <b>Vertex</b> (5) -
+		A vertex is a point on the stadium that can have special properties.
+		<ul>
+		  <li>Click to place a new vertex.
+		</ul>
+	      <li> <b>Disc</b> (6) -
+		Discs are the only object apart from
+		the puck and the players that can be made to
+		move. They can be used as decorations or be allowed to
+		collide with other objects.
+		<ul>
+		  <li>Click to create normal-sized discs.
+		  <li>Click and drag to create custom-sized discs.
+		</ul>
+	      <li><b>Goal</b> (7) - 
+		When the puck crosses a goal, the opposite team scores a point.
+		<ul>
+		  <li> Click and drag to place a goal.
+		  <li> Left side goals will start out red, right side goals will start out blue.
+		</ul>
+		Blue players score in the red goal, and vice-versa.
+	      <li><b>Plane</b> (8) - 
+		Planes are invisible walls of infinite length.
+		<ul>
+		  <li>Click to place a plane. The plane will face the
+		  center of the stadium (it will have a negative
+		  dist).
+		</ul>
+	    </ul>
+	    <h3>Property Editor</h3>
+	    <ul>
+	      <li> When objects are selected, their common properties
+	    are listed in the properties tab on the bottom left.
+	      <li> When one of these properties is changed, it will be applied to all the selected objects.
+	      <li> When a new object is created, the properties will be applied to it.
+	    </ul>
+	    <h3>Properties</h3>
+	    <ul>
+              <li> <b>speed</b> - The initial speed of a disc. The default value is <tt>0,0</tt>.
+	      <li> <b>bCoef</b> - How much bounce an object
+	      has. Officially, this is a number between 0 and
+	      1. Values below 0 and above 1 can also be used with care
+	      (and haxketball nets). The standard value for walls is
+	      1. The standard value for goal nets is 0.1.
+	      <li> <b>cMask</b> - A list of groups that the object
+	      collides with. The puck and the players have a cMask of
+	      "ball, red, blue, wall". During a red kick-off, all
+	      players have an additional cMask of "redKO". During the blue
+	      kick-off, all players have an additional cMask of "blueKO".
+	      <li> <b>cGroup</b> - The groups that an object belongs to.
+		<ul>
+		  <li>ball - the puck
+		  <li>red - red players
+		  <li>blue - blue players
+		  <li>wall - walls
+		  <li>redKO - kick-off barriers for red's kick-off
+		  <li>blueKO - kick-off barriers for blue's kick-off
+		  <li>all - all of the above
+		</ul>
+	      <li> <b>trait</b> - A named set of properties common to many objects.
+	      <li> <b>x</b> - The horizontal position of a vertex.
+	      <li> <b>y</b> - The vertical position of a vertex.
+	      <li> <b>curve</b> - The angle (in degrees) at which a
+	      segment curves. Possible values are between -340 and 340.
+	      <li> <b>vis</b> - true or false. Is this object visible?
+	      <li> <b>color</b> - The color of segments and discs. Specified as a 6-character hexidecimal string.
+	      <li> <b>normal</b> - The direction faced by a plane.
+	      <li> <b>dist</b> - The distance of a plane from the
+	      center of the stadium. When it is positive, it keeps
+	      objects away from the center. When it is negative it
+	      keeps object close to the center.
+	      <li> <b>radius</b> - The half-size of a disc.
+	      <li> <b>invMass</b> - The inverse mass of an disc. 0
+	      means that the disc doesn't move. The higher the
+	      invMass, the lighter the disc. Values below 0 are
+	      possible but must be used with care (and bobsleds). The
+	      default for discs is 1.
+	      <li> <b>pos</b> - The x and y coordinates of the center of a disc.
+	      <li> <b>p0</b> - The coordinates of one end of a goal.
+	      <li> <b>p1</b> - The coordinates of the other end of a goal.
+	      <li> <b>team</b> - The team whose goal it is, either blue or red.
+              <li> <b>damping</b> - The deceleration rate of a disc. 1 means no deceleration. The default value is 0.99.
+	    </ul>
+	    <h3>Editing Actions</h3>
+	    <ul>
+	      <li>Undo the last action. (Z or U)
+	      <li>Cancel the undo. (R)
+	      <li>Remove the selected objects. (Delete)
+	      <li>Select All (A)
+	      <li>Select None
+	      <li>Invert Selection
+	      <li>Cut (X)
+	      <li>Copy (C)
+	      <li>Paste (V)
+	      <li>Duplicate (D)
+	    </ul>
+            <h3>Tools</h3>
+            <ul>
+              <li><b>Automatic Mirror</b> - Most edits are mirrored
+              horizontally and vertically to help design symmetrical
+              stadiums.
+              <li><b>Preview Mode</b> - Preview the stadium without any invisible shapes.
+            </ul>
+	    <h3>Keyboard Shortcuts</h3>
+	    Some browser plugins are not compatible with keyboard shortcuts.
+	    <h3>Text Mode</h3>
+	    The text editor is simpler than notepad in some ways, but has some HBS-specific features.
+	    <ul>
+	      <li>The code is formatted for easy editing.
+	      <li>Vertexes are annotated with their index number.
+	      <li>Objects selected in the visual editor are marked in the code.
+	      <li>The Import button lets you instantly preview your stadium in the visual editor.
+              <li>The Goto Character button allows you to quickly find
+              a position in the file. This can be the position of an
+              error reported by Haxball.
+	    </ul>
+	    <h3>Stadium Properties</h3>
+            Default Values are in parenthesis.
+	    <ul>
+	      <li><b>Spawn Distance</b> - How far to the right and left of the center should the players start?
+	      <li><b>Height</b> and <b>Width</b> - The half size of the stadium.
+              <li><b>Background</b>
+                <ul>
+                  <li><b>Type</b> - The style of backgroud to use, either <i>grass</i> or <i>hockey</i>.
+                  <li><b>Width</b> and <b>Height</b> - The half size of the background.
+                  <li><b>Border Radius</b>
+                  <li><b>Kick-Off Radius</b>
+                </ul>
+              <li><b>Player Physics</b>
+                <ul>
+                  <li><b>Bounce</b> (0.5), <b>Inverse Mass</b> (0.5) and <b>Damping</b> (0.96) - properties of the player disc when not trying to kick.
+                  <li><b>Acceleration</b> (0.1) - Acceleration when moving normally.
+                  <li><b>Kicking Acceleration</b> (0.07) - Acceleration when trying to kick.
+                  <li><b>Kicking Damping</b> (0.96) - Damping while trying to kick.
+                  <li><b>Kick Strength</b> (5) - Strength of kicks.
+                </ul>
+              <li><b>Ball Physics</b>
+                <ul>
+                  <li><b>Radius</b> (10), <b>Bounce</b> (0.5), <b>Inverse Mass</b> (1), <b>Damping</b> (0.99), <b>Color</b> (FFFFFF), <b>Collision Mask</b> (all) and <b>Collision Group</b> (ball) - properties of the ball disc.
+                </ul>
+	    </ul>
+	    <h3>Requirements</h3>
+	    This editor works in Google Chrome and possibly other modern browsers.
+	    <h2>HaxBall</h2>
+	    <a href="http://www.haxball.com">HaxBall</a> is an online multiplayer game created by basro.
+	    <h3>HBS</h3> HaxBall players can create new stadiums by
+	    writing HaxBall Stadium (HBS) files directlty or using an
+	    editor like this one. basro wrote
+	    a <a href="http://www.haxball.com/stadiums/simplestadium_tutorial.hbs">small
+	    tutorial</a> on how to write raw HBS files. New stadium
+	    features released in February 2012 are described in
+	    a <a href="http://haxball.com/static/stadiums/newfeatures_tutorial.hbs">second
+	    tutorial</a>.
+	    <h3>HBR</h3> HaxBall Recordings are not yet supported by
+	    Nn's HBS Editor. Partial information such as reconstructed
+	    stadiums (in HBS format) can be extracted from HBR files
+	    using <a href="hbrdump.zip">HBRDUMP</a> (2Mb zip file).
+
+	  </div>
+  </div>
+</div>
+</body></html>
